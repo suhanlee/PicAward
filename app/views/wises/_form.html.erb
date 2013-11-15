@@ -1,0 +1,25 @@
+<%= form_for(@wise) do |f| %>
+  <% if @wise.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@wise.errors.count, "error") %> prohibited this wise from being saved:</h2>
+
+      <ul>
+      <% @wise.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :writer %><br>
+    <%= f.text_field :writer %>
+  </div>
+  <div class="field">
+    <%= f.label :saying %><br>
+    <%= f.text_area :saying %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

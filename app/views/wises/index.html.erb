@@ -1,0 +1,29 @@
+<h1>Listing wises</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Writer</th>
+      <th>Saying</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @wises.each do |wise| %>
+      <tr>
+        <td><%= wise.writer %></td>
+        <td><%= wise.saying %></td>
+        <td><%= link_to 'Show', wise %></td>
+        <td><%= link_to 'Edit', edit_wise_path(wise) %></td>
+        <td><%= link_to 'Destroy', wise, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Wise', new_wise_path %>

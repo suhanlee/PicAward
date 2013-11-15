@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Writer:</strong>
+  <%= @wise.writer %>
+</p>
+
+<p>
+  <strong>Saying:</strong>
+  <%= @wise.saying %>
+</p>
+
+<%= link_to 'Edit', edit_wise_path(@wise) %> |
+<%= link_to 'Back', wises_path %>
