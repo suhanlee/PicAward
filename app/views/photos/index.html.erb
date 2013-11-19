@@ -1,13 +1,13 @@
 <h1>Listing photos</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Category</th>
       <th>Title</th>
       <th>Image</th>
       <th>Read</th>
-      <th></th>
+      <th>Actions</th>
     </tr>
   </thead>
 
@@ -18,9 +18,21 @@
         <td><%= photo.title %></td>
         <td><%= photo.image %></td>
         <td><%= photo.read %></td>
-        <td><%= link_to 'Show', photo %></td>
-        <td><%= link_to 'Edit', edit_photo_path(photo) %></td>
-        <td><%= link_to 'Destroy', photo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <span class="btn btn-default">
+          <%= link_to 'Show', photo %>
+          </span>
+        </td>
+        <td>
+          <span class="btn btn-default">
+          <%= link_to 'Edit', edit_photo_path(photo) %>
+          </span>
+        </td>
+        <td>
+          <span class="btn btn-danger">
+          <%= link_to 'Destroy', photo, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </span>
+        </td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +40,6 @@
 
 <br>
 
+<span class="btn btn-primary">
 <%= link_to 'New Photo', new_photo_path %>
+</span>

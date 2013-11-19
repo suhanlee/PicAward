@@ -13,12 +13,18 @@ $(function () {
         $.each(result, function(index, photo) {
             baseUrl = photo.image.image.url;
 
-         $('<a/>')
-                .append($('<img>').prop('src', baseUrl).prop('width', 100))
-                .prop('href', baseUrl)
-                .prop('title', photo.title)
-                .attr('data-gallery', '')
-                .appendTo(linksContainer);
+         $('<span>').addClass('col-xs-8 col-sm-4 col-lg-2')
+                    .append(
+                        $('<a>')
+                        .addClass('thumbnail')
+                        .prop('href', baseUrl)
+                        .prop('title', photo.title)
+                        .attr('data-gallery', '')
+                        .append($('<img>').prop('src', baseUrl))
+                        )
+                    .appendTo(linksContainer);
+
+        
         });
         
     });

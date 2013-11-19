@@ -1,9 +1,11 @@
 <div class="container">
-    <h1>GDG Picture</h1>
-    <blockquote>
-    	<p>"<%= @wises.saying %>"</p>
-    	<p>-<%= @wises.writer %>-</p>
-	</blockquote> 
+    <h1><span class="label label-info">GDG Picture</span></h1>
+        <div class="well">
+            <blockquote>
+    	       <p>"<%= @wises.saying %>"</p>
+    	       <p>-<%= @wises.writer %>-</p>
+            </blockquote>
+	    </div>
     <form class="form-inline">
         <div class="form-group">
             <button id="image-gallery-button" type="button" class="btn btn-primary btn-lg">
