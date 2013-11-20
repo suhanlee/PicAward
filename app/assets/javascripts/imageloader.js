@@ -9,11 +9,16 @@ $(function () {
         dataType: 'json'
     }).done(function (result) {
         var linksContainer = $('#links'),
-            baseUrl;
+            baseUrl,
+            likeCount;
+
+            
         $.each(result, function(index, photo) {
             baseUrl = photo.image.image.url;
+            likeCount = photo.like;
 
-         $('<span>').addClass('col-xs-8 col-sm-4 col-lg-2')
+        var imgThumbnail = $('<span>')
+                    .addClass('col-xs-8 col-sm-4 col-lg-2')
                     .append(
                         $('<a>')
                         .addClass('thumbnail')
@@ -21,7 +26,20 @@ $(function () {
                         .prop('title', photo.title)
                         .attr('data-gallery', '')
                         .append($('<img>').prop('src', baseUrl))
-                        )
+                    );
+
+        var thumbsUpIcon = $('<span>')
+                            .addClass('glyphicon glyphicon-thumbs-up')
+                            .text(likeCount);
+        
+        var likeButton = $('<button>')
+                            .addClass('btn btn-default')
+                            .prop('type', 'button')
+                            .append(thumbsUpIcon);
+
+
+                    imgThumbnail
+                    .append(likeButton)
                     .appendTo(linksContainer);
 
         

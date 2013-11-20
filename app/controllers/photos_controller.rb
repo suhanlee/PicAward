@@ -1,11 +1,13 @@
 class PhotosController < ApplicationController
   before_action :set_photo, only: [:show, :edit, :update, :destroy]
 
-  # GET /photos
-  # GET /photos.json
+
   def wiseMessage
     @wise = Wise.first
   end
+  
+  # GET /photos
+  # GET /photos.json
   def index
     @photos = Photo.all
     @wise = Wise.first
@@ -73,6 +75,6 @@ class PhotosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def photo_params
-      params.require(:photo).permit(:title, :image, :read, :category_id)
+      params.require(:photo).permit(:title, :image, :like, :category_id)
     end
 end
