@@ -1,5 +1,21 @@
 class PhotosController < ApplicationController
-  before_action :set_photo, only: [:show, :edit, :update, :destroy]
+  before_action :set_photo, only: [:show, :edit, :update, :addLike, :destroy]
+
+
+  def addLike
+    @photo.like = @photo.like + 1
+    
+    respond_to do |format|
+      if @photo.save
+        # format.html { render nothing: true }
+        format.html { render text: "+1 Like Completed" }
+        format.json { render action: 'show' }
+      else
+        format.json { render json: @photo.errors, status: :unprocessable_entity }
+      end
+    end
+
+  end
 
 
   def wiseMessage

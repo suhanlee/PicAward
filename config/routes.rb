@@ -7,6 +7,9 @@ PicAward::Application.routes.draw do
   resources :photos
   root 'display#index'
 
+  get "photos/addLike/:id" => 'photos#addLike'
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -8,15 +8,15 @@ $(function () {
         url: '/photos.json',
         dataType: 'json'
     }).done(function (result) {
-        var linksContainer = $('#links'),
-            baseUrl,
-            likeCount;
-
+        var linksContainer = $('#links'), baseUrl;
             
         $.each(result, function(index, photo) {
-            baseUrl = photo.image.image.url;
-            likeCount = photo.like;
+            var photoId = photo.id;
+            var likeCount = photo.like;
+            var likeUrl;
 
+            baseUrl = photo.image.image.url;
+           
         var imgThumbnail = $('<span>')
                     .addClass('col-xs-8 col-sm-4 col-lg-2')
                     .append(
@@ -41,7 +41,18 @@ $(function () {
                     imgThumbnail
                     .append(likeButton)
                     .appendTo(linksContainer);
+        
+        likeButton.click(function(){
+            likeUrl = "photos/addLike/" + photoId + ".json";
+           
+            $.ajax({
+                dataType:'json', 
+                url:likeUrl
+            }).done(function(result) {
+                thumbsUpIcon.text(result.like);
+            });
 
+        });
         
         });
         
